@@ -22,15 +22,15 @@ df_headers = ['ce_mean', 'ce_median', 'ce_std', 'cp_mean', 'cp_median', 'cp_std'
            'ts3_mean', 'ts3_median', 'ts3_std', 'ts4_mean', 'ts4_median', 'ts4_std',
            'vs1_mean', 'vs1_median', 'vs1_std',"Target Values"]
 
-#list all the files in model_data for calculating mean median and standard deviation
-base_dir = Path(__file__).parent.parent /"model_data"
+#list all the files in raw_model_data for calculating mean median and standard deviation
+base_dir = Path(__file__).parent.parent /"raw_model_data"
 data_file_list = sorted(base_dir.glob("*.txt"))
 
-#instaniate the dataframes needed
+#instantiate the dataframes needed
 processed_dataframe = pd.DataFrame()
 target_values_df = pd.DataFrame()
 
-#loop over the files in model_data, read each file and concat to processed_dataframe
+#loop over the files in raw_model_data, read each file and concat to processed_dataframe
 #profile.txt hold the targets values, the second column of profile.txt is stored in target_values_df
 for f in data_file_list:
     if f.name != "profile.txt":
@@ -45,6 +45,6 @@ for f in data_file_list:
 processed_dataframe = pd.concat([processed_dataframe,target_values_df],axis=1)
 processed_dataframe.columns = df_headers
 
-#save the dataframe for the model to use
+#save the data for the model to use
 processed_dataframe.to_csv(base_dir.parent/"process_train_data"/"processed_data.csv",index=False)
 

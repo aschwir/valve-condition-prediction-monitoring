@@ -25,3 +25,17 @@ This project uses the **Condition Monitoring of Hydraulic Systems** dataset from
 * **Efficiency factor** `(SE)`
 * **Virtual cooling efficiency sensor** `(CE)`
 * **Virtual cooling power sensor** `(CP)`
+
+
+## Model Performance
+
+The Random Forest baseline achieved **0.986 accuracy** and **0.983 macro F1** 
+on the held-out test set. Stratified 10-fold cross-validation on the training data gave a 
+mean accuracy of **0.980** and macro F1 of **0.974**, which is consistent with the 
+baseline and indicates the result is stable across different data splits.
+
+| Metric      | Baseline (Test Set) | Cross-Validation (10-Fold) |
+|-------------|---------------------|----------------------------|
+| Accuracy    | 0.986               | 0.980                      |
+| Macro F1    | 0.983               | 0.974                      |
+| Weighted F1 | 0.987               | 0.980                      |
